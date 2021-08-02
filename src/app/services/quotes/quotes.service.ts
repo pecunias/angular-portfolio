@@ -1027,7 +1027,6 @@ export class QuotesService {
   }
 
   getLatestClosePrice(data: any): any {
-    // let result = 0;
     const timeSeriesDaily = data['Time Series (Daily)'];
     const result = timeSeriesDaily[Object.keys(timeSeriesDaily)[0]];
     return result['4. close'] ?? 0;

@@ -15,8 +15,8 @@ export class DashboardComponent implements OnInit {
   public data = [] as any;
 
   public quotes = [
-    { symbol: 'IBM' }, 
-    { symbol: 'AAPL' }
+    { symbol: 'IBM', amount: 2 }, 
+    { symbol: 'AAPL', amount: 3 }
   ];
 
   constructor(
@@ -32,7 +32,8 @@ export class DashboardComponent implements OnInit {
       this.quotesService.getQuote(entry.symbol).subscribe((data) => {
         this.data.push({
           latestPrice: this.quotesService.getLatestClosePrice(data),
-          quoteSymbol: entry.symbol
+          quoteSymbol: entry.symbol,
+          amount: entry.amount
         });
       })
     })
