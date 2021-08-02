@@ -10,19 +10,27 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Angular material
 import { MatCardModule } from '@angular/material/card';
 import { CardQuoteComponent } from './components/card-quote/card-quote.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { NewQuoteComponent } from './components/new-quote/new-quote/new-quote.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    CardQuoteComponent
+    CardQuoteComponent,
+    NewQuoteComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatCardModule,
-    HttpClientModule
+    HttpClientModule,
+    MatIconModule,
+    MatButtonModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

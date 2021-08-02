@@ -1,4 +1,13 @@
-<div *ngFor="let quote of data; let index = index">
-    <app-card-quote
-        [data]="quote"></app-card-quote>
-</div>
+<mat-grid-list cols="2" rowHeight="250px">
+    <div *ngFor="let quote of data; let index = index">
+        <mat-grid-tile>
+            <app-card-quote
+                [data]="quote">
+            </app-card-quote>
+        </mat-grid-tile>
+    </div>
+    <mat-grid-tile>
+        <app-new-quote></app-new-quote>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <button (click)="addToPortfolio()"></button>

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { QuotesService } from '../../services/quotes/quotes.service';
+import { IQuote } from '../../models/quote.model';
+import { LocalStorageService } from '../../services/local-storage/local-storage.service';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -7,35 +10,42 @@ import { QuotesService } from '../../services/quotes/quotes.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  // TODO: create model
-  // public data = [{
-  //   latestPrice: 1,
-  //   quoteSymbol: 'Unknown'
-  // }];
+  public quotes: IQuote[] = []
   public data = [] as any;
 
-  public quotes = [
-    { symbol: 'IBM', amount: 2 }, 
-    { symbol: 'AAPL', amount: 3 }
-  ];
-
   constructor(
-    private quotesService: QuotesService
+    private quotesService: QuotesService,
+    private localStorageService: LocalStorageService
   ) { }
 
   ngOnInit(): void {
     this.generateData();
   }
 
-  generateData() {   
-    this.quotes.forEach((entry) => {
-      this.quotesService.getQuote(entry.symbol).subscribe((data) => {
-        this.data.push({
-          latestPrice: this.quotesService.getLatestClosePrice(data),
-          quoteSymbol: entry.symbol,
-          amount: entry.amount
-        });
+  generateData() {
+    this.localStorageService.getItem('portfolio').then((item) => {
+      this.quotes = item !== null ? JSON.parse(item) : []
+      this.data = [];
+
+      this.quotes.forEach((entry: IQuote) => {
+        this.quotesService.getQuote(entry.symbol).subscribe((data) => {
+          this.data.push({
+            latestPrice: this.quotesService.getLatestClosePrice(data),
+            quoteSymbol: entry.symbol,
+            amount: entry.amount
+          });
+        })
       })
-    })
+    });
+  }
+
+  addToPortfolio() {
+    this.localStorageService.getItem('portfolio').then((item) => {
+      const currentPortfolio = item !== null ? JSON.parse(item) : []
+      currentPortfolio.push({symbol: 'CGC', amount: 123})
+      localStorage.removeItem('portfolio');
+      this.localStorageService.setItem('portfolio', JSON.stringify(currentPortfolio));
+      this.generateData();
+    });
   }
 }
