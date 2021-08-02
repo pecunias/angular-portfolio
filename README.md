@@ -1,3 +1,10 @@
+2+ years of experience with Angular
+2+ years of experience with NodeJS (Preferably experience with express)
+Proven knowledge with building automated unit/technical tests to test your code
+Proven knowledge with containerisation using Kubernetes and/or Openshift
+Experience with development and deployment in cloud environments (AWS) is highly appreciated
+In addition, you have experience with working in an Agile environment and work well in a highly complex (business) environment.
+
 # AngularPortfolio
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.4.
