@@ -1,4 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { IPosition } from 'src/app/models/position.model';
+import { PortfolioService } from 'src/app/services/portfolio/portfolio.service';
+import { DashboardComponent } from '../dashboard/dashboard.component';
 
 @Component({
   selector: 'app-card-quote',
@@ -7,10 +10,16 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CardQuoteComponent implements OnInit {
   // Create model
-  @Input() data: any
-  constructor() { }
+  @Input() data: any | IPosition
+  constructor(private portfolioService: PortfolioService, private dashboardComponent: DashboardComponent) { }
 
   ngOnInit(): void {
+  }
+
+  deletePosition(data: IPosition) {
+    this.portfolioService.removeFromPortfolio(data).then(() => {
+      this.dashboardComponent.generatePositions();
+    });
   }
 
 }

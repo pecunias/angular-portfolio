@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { QuotesService } from '../../services/quotes/quotes.service';
-import { IQuote } from '../../models/quote.model';
 import { LocalStorageService } from '../../services/local-storage/local-storage.service';
+import { IPosition } from 'src/app/models/position.model';
+import { PortfolioService } from 'src/app/services/portfolio/portfolio.service';
 
 
 @Component({
@@ -10,42 +11,19 @@ import { LocalStorageService } from '../../services/local-storage/local-storage.
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  public quotes: IQuote[] = []
-  public data = [] as any;
+  public positions: IPosition[] = [];
 
   constructor(
-    private quotesService: QuotesService,
-    private localStorageService: LocalStorageService
+    private portfolioService: PortfolioService
   ) { }
 
   ngOnInit(): void {
-    this.generateData();
+    this.generatePositions();
   }
 
-  generateData() {
-    this.localStorageService.getItem('portfolio').then((item) => {
-      this.quotes = item !== null ? JSON.parse(item) : []
-      this.data = [];
-
-      this.quotes.forEach((entry: IQuote) => {
-        this.quotesService.getQuote(entry.symbol).subscribe((data) => {
-          this.data.push({
-            latestPrice: this.quotesService.getLatestClosePrice(data),
-            quoteSymbol: entry.symbol,
-            amount: entry.amount
-          });
-        })
-      })
-    });
-  }
-
-  addToPortfolio() {
-    this.localStorageService.getItem('portfolio').then((item) => {
-      const currentPortfolio = item !== null ? JSON.parse(item) : []
-      currentPortfolio.push({symbol: 'CGC', amount: 123})
-      localStorage.removeItem('portfolio');
-      this.localStorageService.setItem('portfolio', JSON.stringify(currentPortfolio));
-      this.generateData();
+  generatePositions() {
+    this.portfolioService.getPortfolio().then((positions) => {
+      this.positions = positions;
     });
   }
 }

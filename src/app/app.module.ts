@@ -14,13 +14,19 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { NewQuoteComponent } from './components/new-quote/new-quote/new-quote.component';
+import { DialogComponent } from './components/dialog/dialog/dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input'
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     CardQuoteComponent,
-    NewQuoteComponent
+    NewQuoteComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +36,11 @@ import { NewQuoteComponent } from './components/new-quote/new-quote/new-quote.co
     HttpClientModule,
     MatIconModule,
     MatButtonModule,
-    MatGridListModule
+    MatGridListModule,
+    MatDialogModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

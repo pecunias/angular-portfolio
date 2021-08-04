@@ -1,8 +1,8 @@
 <mat-grid-list cols="2" rowHeight="250px">
-    <div *ngFor="let quote of data; let index = index">
+    <div *ngFor="let position of positions; let index = index">
         <mat-grid-tile>
             <app-card-quote
-                [data]="quote">
+                [data]="position">
             </app-card-quote>
         </mat-grid-tile>
     </div>
@@ -10,4 +10,3 @@
         <app-new-quote></app-new-quote>
     </mat-grid-tile>
   </mat-grid-list>
-  <button (click)="addToPortfolio()"></button>

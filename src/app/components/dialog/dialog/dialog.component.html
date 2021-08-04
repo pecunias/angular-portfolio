@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>Fill in your stock</h1>
+<div mat-dialog-content>
+  <p>Fill in the symbol of your stock</p>
+  <mat-form-field appearance="fill">
+    <mat-label>Symbol of stock</mat-label>
+    <input matInput [(ngModel)]="position.symbol">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Amount</mat-label>
+    <input type="number" min="0" matInput [(ngModel)]="position.amount">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="position" cdkFocusInitial>Enter</button>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+</div>
