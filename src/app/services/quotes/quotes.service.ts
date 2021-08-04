@@ -1034,8 +1034,8 @@ export class QuotesService {
 
   getDescriptionPriceAction(data: any): string {
         const timeSeriesDaily = data['Time Series (Daily)'];
-        const today = timeSeriesDaily[Object.keys(timeSeriesDaily)[0]];
-        const yesterday = timeSeriesDaily[Object.keys(timeSeriesDaily)[1]];
+        const today = timeSeriesDaily[Object.keys(timeSeriesDaily)[0]]["4. close"];
+        const yesterday = timeSeriesDaily[Object.keys(timeSeriesDaily)[1]]["4. close"];
         if (today > yesterday) {
             return 'higher';
         } else if (today < yesterday) {
