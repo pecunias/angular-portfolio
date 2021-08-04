@@ -23,12 +23,12 @@ export class PortfolioService {
 
   removeFromPortfolio(position: IPosition): Promise<void> {
     return this.localStorageService.getItem('portfolio').then((item) => {
-      let currentPortfolio = item !== null ? JSON.parse(item) : []
-      currentPortfolio = currentPortfolio.filter((item: IPosition) => {
-        item !== position
+      const currentPortfolio = item !== null ? JSON.parse(item) : []
+      let updatedPortfolio = currentPortfolio.filter((item: IPosition) => {
+        return item.id !== position.id
       })
       localStorage.removeItem('portfolio');
-      this.localStorageService.setItem('portfolio', JSON.stringify(currentPortfolio));
+      this.localStorageService.setItem('portfolio', JSON.stringify(updatedPortfolio));
     })
   }
 
@@ -40,6 +40,7 @@ export class PortfolioService {
       this.quotes.forEach((entry: IPosition) => {
         this.quotesService.getQuote(entry.symbol).subscribe((data) => {
           this.positions.push({
+            id: entry.id,
             latestPrice: this.quotesService.getLatestClosePrice(data),
             symbol: entry.symbol,
             amount: entry.amount

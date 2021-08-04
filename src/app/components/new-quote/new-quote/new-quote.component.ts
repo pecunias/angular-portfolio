@@ -5,6 +5,8 @@ import { DialogComponent } from '../../dialog/dialog/dialog.component';
 import { PortfolioService } from 'src/app/services/portfolio/portfolio.service';
 import { DashboardComponent } from '../../dashboard/dashboard.component';
 
+import { v4 as uuid } from 'uuid';
+
 @Component({
   selector: 'app-new-quote',
   templateUrl: './new-quote.component.html',
@@ -24,7 +26,7 @@ export class NewQuoteComponent {
     dialogRef.afterClosed().subscribe(result => {
       this.symbol = result.symbol;
       this.amount = result.amount;
-      this.portfolioService.addToPortfolio({symbol: this.symbol, amount: this.amount}).then(() => {
+      this.portfolioService.addToPortfolio({symbol: this.symbol, amount: this.amount, id: uuid()}).then(() => {
         this.dashboardComponent.generatePositions();
       });
     });
