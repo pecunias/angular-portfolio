@@ -3,7 +3,7 @@
         {{data.symbol}}
     </mat-card-title>
     <mat-card-subtitle>
-        {{data.latestPrice}}, total: {{data.latestPrice * data.amount | currency}}
+        {{data.latestPrice | currency}}, total: {{data.latestPrice * data.amount | currency}}
     </mat-card-subtitle>
     <mat-card-content>
         <div *ngIf="data.changed === 'higher'">
@@ -13,9 +13,7 @@
             <img src="assets/img/position-card/red-arrow-down.png" mat-card-md-image>
         </div>
         <ng-template #elseBlock><div>
-            
         </div></ng-template>
-
     </mat-card-content>
     
     <mat-card-actions><button mat-fab color="primary" aria-label="Example icon button with a delete icon">
