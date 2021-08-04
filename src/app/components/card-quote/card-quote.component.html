@@ -5,6 +5,19 @@
     <mat-card-subtitle>
         {{data.latestPrice}}, total: {{data.latestPrice * data.amount | currency}}
     </mat-card-subtitle>
+    <mat-card-content>
+        <div *ngIf="data.changed === 'higher'">
+            <img src="assets/img/position-card/green-arrow-up.png" mat-card-md-image>
+        </div>
+        <div *ngIf="data.changed === 'lower'">
+            <img src="assets/img/position-card/red-arrow-down.png" mat-card-md-image>
+        </div>
+        <ng-template #elseBlock><div>
+            
+        </div></ng-template>
+
+    </mat-card-content>
+    
     <mat-card-actions><button mat-fab color="primary" aria-label="Example icon button with a delete icon">
         <mat-icon class="matIcon" (click)="deletePosition(data)">delete</mat-icon>
       </button></mat-card-actions>

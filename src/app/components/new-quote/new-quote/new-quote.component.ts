@@ -27,7 +27,7 @@ export class NewQuoteComponent {
       if (result.symbol && result.amount >= 1) {
         this.symbol = result.symbol;
         this.amount = result.amount;
-        this.portfolioService.addToPortfolio({symbol: this.symbol, amount: this.amount, id: uuid()}).then(() => {
+        this.portfolioService.addToPortfolio({symbol: this.symbol, amount: this.amount, id: uuid(), changed: 'neutral'}).then(() => {
           this.dashboardComponent.generatePositions();
         });
       }

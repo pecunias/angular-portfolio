@@ -11,4 +11,11 @@ button {
 
 mat-card {
     width: 250px;
+    margin: 100px;
 }
+
+mat-card-content {
+    display: flex;
+    justify-content: center
+}
+

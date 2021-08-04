@@ -43,7 +43,8 @@ export class PortfolioService {
             id: entry.id,
             latestPrice: this.quotesService.getLatestClosePrice(data),
             symbol: entry.symbol,
-            amount: entry.amount
+            amount: entry.amount,
+            changed: this.quotesService.isPriceHigherThanYesterday(data)
           });
         })
       })
