@@ -1032,10 +1032,16 @@ export class QuotesService {
     return result['4. close'] ?? 0;
   }
 
-  isPriceHigherThanYesterday(data: any): string {
+  getDescriptionPriceAction(data: any): string {
         const timeSeriesDaily = data['Time Series (Daily)'];
         const today = timeSeriesDaily[Object.keys(timeSeriesDaily)[0]];
         const yesterday = timeSeriesDaily[Object.keys(timeSeriesDaily)[1]];
-        return today < yesterday ? 'higher' : 'lower';
+        if (today > yesterday) {
+            return 'higher';
+        } else if (today < yesterday) {
+            return 'lower';
+        } else {
+            return 'neutral';
+        }
     }
 }
