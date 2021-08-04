@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../../dialog/dialog/dialog.component';
 
-import { ISymbol } from 'src/app/models/symbol.model';
 import { PortfolioService } from 'src/app/services/portfolio/portfolio.service';
 import { DashboardComponent } from '../../dashboard/dashboard.component';
 
@@ -11,13 +10,10 @@ import { DashboardComponent } from '../../dashboard/dashboard.component';
   templateUrl: './new-quote.component.html',
   styleUrls: ['./new-quote.component.scss']
 })
-export class NewQuoteComponent implements OnInit {
+export class NewQuoteComponent {
   symbol: string = '';
   amount: number = 0;
   constructor(public dialog: MatDialog, private portfolioService: PortfolioService, private dashboardComponent: DashboardComponent) {}
-
-  ngOnInit(): void {
-  }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogComponent, {

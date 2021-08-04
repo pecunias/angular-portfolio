@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { QuotesService } from '../../services/quotes/quotes.service';
-import { LocalStorageService } from '../../services/local-storage/local-storage.service';
 import { IPosition } from 'src/app/models/position.model';
 import { PortfolioService } from 'src/app/services/portfolio/portfolio.service';
-
 
 @Component({
   selector: 'app-dashboard',

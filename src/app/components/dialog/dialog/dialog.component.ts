@@ -1,8 +1,6 @@
 import { Component, Inject } from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { IPosition } from 'src/app/models/position.model';
-
-import { ISymbol } from 'src/app/models/symbol.model';
 
 @Component({
   selector: 'app-dialog',
