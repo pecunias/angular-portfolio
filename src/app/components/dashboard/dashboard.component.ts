@@ -18,13 +18,18 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.breakpoint = (window.innerWidth <= this.MAX_WIDTH_SCREEN) ? 1 : 2;
+    this.breakpoint = this.generateBreakPoint(window.innerWidth, this.MAX_WIDTH_SCREEN);
     this.generatePositions();
   }
 
   onResize(event: any) {
-    this.breakpoint = (event.target.innerWidth <= this.MAX_WIDTH_SCREEN) ? 1 : 2;
+    this.breakpoint = this.generateBreakPoint(event.target.innerWidth, this.MAX_WIDTH_SCREEN);
   }
+
+  // based on original onResize and breakpoint in ngOnInit
+  generateBreakPoint(innerWidth: number, maxWidth: number): number {
+    return (innerWidth <= maxWidth) ? 1 : 2
+  } 
 
   generatePositions() {
     this.portfolioService.getPortfolio().then((positions) => {
