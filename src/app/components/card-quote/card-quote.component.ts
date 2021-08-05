@@ -8,14 +8,10 @@ import { DashboardComponent } from '../dashboard/dashboard.component';
   templateUrl: './card-quote.component.html',
   styleUrls: ['./card-quote.component.scss']
 })
-export class CardQuoteComponent implements OnInit {
+export class CardQuoteComponent {
   // Create model
   @Input() data: any | IPosition
   constructor(private portfolioService: PortfolioService, private dashboardComponent: DashboardComponent) { }
-
-  ngOnInit() {
-    console.log(this.data);
-  }
 
   deletePosition(data: IPosition) {
     this.portfolioService.removeFromPortfolio(data).then(() => {
