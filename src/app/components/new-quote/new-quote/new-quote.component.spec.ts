@@ -1,4 +1,8 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialogModule } from '@angular/material/dialog';
+import { PortfolioService } from 'src/app/services/portfolio/portfolio.service';
+import { DashboardComponent } from '../../dashboard/dashboard.component';
 
 import { NewQuoteComponent } from './new-quote.component';
 
@@ -8,7 +12,9 @@ describe('NewQuoteComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NewQuoteComponent ]
+      imports :[MatDialogModule, HttpClientTestingModule],
+      declarations: [ NewQuoteComponent ],
+      providers: [PortfolioService, DashboardComponent]
     })
     .compileComponents();
   });
