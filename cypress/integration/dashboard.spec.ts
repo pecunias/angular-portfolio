@@ -17,7 +17,7 @@ describe('adds/removes position', () => {
     });
 
     describe('in the unhappy flow', () =>{
-        it('does add not position to the dashboard if values are not set', () => {
+        it('does not add position to the dashboard if values are not set', () => {
             cy.visit('/');
             cy.get('.add-position').click();
             cy.get('.enter-button').click();
