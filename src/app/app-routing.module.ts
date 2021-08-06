@@ -5,10 +5,12 @@ import { ProfileComponent } from './components/profile/profile/profile.component
 import { 
   AuthGuardService as AuthGuard 
 } from './../app/services/auth/auth-guard/auth-guard.service';
+import { LoginComponent } from './components/login/login/login.component';
 
 const routes: Routes = [
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'portfolio', component: DashboardComponent},
+  { path: 'login', component: LoginComponent},
   { path: '**', redirectTo: 'portfolio' },
 ];
 

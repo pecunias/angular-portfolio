@@ -21,6 +21,13 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { ProfileComponent } from './components/profile/profile/profile.component'
 
+import { 
+  AuthGuardService as AuthGuard 
+} from './../app/services/auth/auth-guard/auth-guard.service';
+import { AuthService } from './services/auth/auth.service';
+import { LoginComponent } from './components/login/login/login.component';
+import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +35,8 @@ import { ProfileComponent } from './components/profile/profile/profile.component
     CardQuoteComponent,
     NewQuoteComponent,
     DialogComponent,
-    ProfileComponent
+    ProfileComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +52,7 @@ import { ProfileComponent } from './components/profile/profile/profile.component
     MatFormFieldModule,
     MatInputModule
   ],
-  providers: [],
+  providers: [AuthGuard, AuthService, JwtHelperService,  { provide: JWT_OPTIONS, useValue: JWT_OPTIONS }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
