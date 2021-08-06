@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { RegisterService } from 'src/app/services/auth/register/register.service';
+import { RoutingService } from 'src/app/services/routing/routing.service';
 
 @Component({
   selector: 'app-register',
@@ -9,7 +9,9 @@ import { RegisterService } from 'src/app/services/auth/register/register.service
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private registerService: RegisterService, private router: Router) { }
+  constructor(private registerService: RegisterService, private routingService: RoutingService) { }
+
+  message: string = 'Registering...';
 
   ngOnInit(): void {
     this.registerUser();
@@ -17,10 +19,15 @@ export class RegisterComponent implements OnInit {
 
   registerUser() {
     this.registerService.registerUser('testUser')
-      .subscribe((data: any) => localStorage.setItem('token', data));
+      .subscribe((data: any) => { 
+        this.message = "You are now registered!";
+        localStorage.setItem('token', data)
+      }, (error) => {
+        this.message = `Something went wrong! Check if node-authentication is running correctly! ${JSON.stringify(error.message)}`;
+      });
   }
 
   goToProfile() {
-    this.router.navigate(['/profile']);
+    this.routingService.navigateTo('profile');
   }
 }

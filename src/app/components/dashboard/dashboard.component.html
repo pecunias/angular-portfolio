@@ -1,4 +1,4 @@
-<mat-grid-list [cols]="breakpoint" rowHeight="300px" (window:resize)="onResize($event)">>
+<mat-grid-list [cols]="breakpoint" rowHeight="300px" (window:resize)="onResize($event)">
     <div *ngFor="let position of positions; let index = index">
         <mat-grid-tile>
             <app-card-quote

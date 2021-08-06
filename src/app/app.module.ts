@@ -20,6 +20,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { ProfileComponent } from './components/profile/profile/profile.component'
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { 
   AuthGuardService as AuthGuard 
@@ -29,6 +30,7 @@ import { LoginComponent } from './components/login/login/login.component';
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 import { RegisterComponent } from './components/register/register.component';
 import { RegisterService } from './services/auth/register/register.service';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,8 @@ import { RegisterService } from './services/auth/register/register.service';
     DialogComponent,
     ProfileComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ToolbarComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,8 @@ import { RegisterService } from './services/auth/register/register.service';
     MatDialogModule,
     FormsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatToolbarModule
   ],
   providers: [AuthGuard, AuthService, JwtHelperService,  { provide: JWT_OPTIONS, useValue: JWT_OPTIONS }, RegisterService],
   bootstrap: [AppComponent]
