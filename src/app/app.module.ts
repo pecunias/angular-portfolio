@@ -18,7 +18,8 @@ import { DialogComponent } from './components/dialog/dialog/dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
-import { MatInputModule } from '@angular/material/input'
+import { MatInputModule } from '@angular/material/input';
+import { ProfileComponent } from './components/profile/profile/profile.component'
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { MatInputModule } from '@angular/material/input'
     DashboardComponent,
     CardQuoteComponent,
     NewQuoteComponent,
-    DialogComponent
+    DialogComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
