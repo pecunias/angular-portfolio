@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card class="position">
     <mat-card-title>
         {{data.symbol}}
     </mat-card-title>
@@ -16,7 +16,7 @@
         </div></ng-template>
     </mat-card-content>
     
-    <mat-card-actions><button mat-fab color="primary" aria-label="Example icon button with a delete icon">
+    <mat-card-actions><button class="delete-position" mat-fab color="primary" aria-label="Example icon button with a delete icon">
         <mat-icon class="matIcon" (click)="deletePosition(data)">delete</mat-icon>
       </button></mat-card-actions>
 </mat-card>
