@@ -27,6 +27,8 @@ import {
 import { AuthService } from './services/auth/auth.service';
 import { LoginComponent } from './components/login/login/login.component';
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
+import { RegisterComponent } from './components/register/register.component';
+import { RegisterService } from './services/auth/register/register.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
     NewQuoteComponent,
     DialogComponent,
     ProfileComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +55,7 @@ import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
     MatFormFieldModule,
     MatInputModule
   ],
-  providers: [AuthGuard, AuthService, JwtHelperService,  { provide: JWT_OPTIONS, useValue: JWT_OPTIONS }],
+  providers: [AuthGuard, AuthService, JwtHelperService,  { provide: JWT_OPTIONS, useValue: JWT_OPTIONS }, RegisterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
